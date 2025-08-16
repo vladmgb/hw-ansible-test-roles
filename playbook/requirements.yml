@@ -7,9 +7,9 @@
 - src: https://github.com/vladmgb/vector-role.git
   scm: git
   version: "v1.1"
-  name: vector-role
+  name: vector_role
 
 - src: https://github.com/vladmgb/lighthouse-role.git
   scm: git
   version: "1.1"
-  name: lighthouse-role
+  name: lighthouse_role
