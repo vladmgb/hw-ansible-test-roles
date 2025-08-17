@@ -5,10 +5,16 @@ After=network-online.target
 Requires=network-online.target
 
 [Service]
-User={{ ansible_user_id }}
-Group={{ ansible_user_id }}
-ExecStart=/usr/bin/vector --config {{ vector_config_dir }}/vector.yml
+User=root
+Group=root
+ExecStartPre=/usr/local/bin/vector validate --config-yaml {{ vector_config_dir }}/vector.yml
+ExecStart=/usr/local/bin/vector --config-yaml {{ vector_config_dir }}/vector.yml
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+EnvironmentFile=-/etc/default/vector
+StandardOutput=journal+console
+StandardError=journal+console
+
 [Install]
 WantedBy=multi-user.target

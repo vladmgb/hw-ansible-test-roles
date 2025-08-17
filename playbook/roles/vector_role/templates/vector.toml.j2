@@ -1,0 +1,10 @@
+[sources.in]
+type = "file"
+include = ["/tmp/input.log"]
+ignore_older_secs = 30
+
+[sinks.out]
+type = "file"
+path = "/tmp/output.log"
+inputs = ["in"]
+encoding.codec = "json"

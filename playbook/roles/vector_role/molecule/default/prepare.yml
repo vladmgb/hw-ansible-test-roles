@@ -1,0 +1,44 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+
+    - name: Check if sudo is installed
+      ansible.builtin.raw: |
+        if command -v sudo >/dev/null 2>&1; then exit 0; else exit 1; fi
+      register: sudo_check
+      ignore_errors: true
+      changed_when: false
+
+    - name: Install sudo on Oracle Linux
+      ansible.builtin.yum:
+        name: sudo
+        state: present
+      when: 
+        - ansible_facts['os_family'] == 'RedHat'
+        - sudo_check.rc != 0
+
+    - name: Install sudo on Ubuntu
+      ansible.builtin.apt:
+        name: sudo
+        state: present
+      when: 
+        - ansible_facts['os_family'] == 'Debian'
+        - sudo_check.rc != 0
+
+    - name: Install basic utilities (Oracle Linux)
+      ansible.builtin.yum:
+        name:
+          - which
+          - procps-ng  
+          - iproute  
+        state: present
+      when: ansible_facts['os_family'] == 'RedHat'
+
+    - name: Install basic utilities (Ubuntu)
+      ansible.builtin.apt:
+        name:
+          - procps
+          - iproute2
+        state: present
+      when: ansible_facts['os_family'] == 'Debian'

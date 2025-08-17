@@ -1,6 +1,6 @@
 ---
-vector_url: "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-1.x86_64.rpm"
-vector_version: "0.34.0"
+vector_url: "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-x86_64-unknown-linux-gnu.tar.gz"
+vector_version: "0.39.0"
 vector_config_dir: "/etc/vector"
 vector_config:
   sources:

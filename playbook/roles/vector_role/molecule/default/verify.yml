@@ -1,0 +1,22 @@
+- name: Verify Vector installation
+  hosts: all
+  tasks:
+    - name: Check Vector binary
+      stat:
+        path: /usr/local/bin/vector
+      register: vector_bin
+
+    - name: Check Vector process
+      command: pgrep -f "vector --config"
+      register: vector_process
+      ignore_errors: true
+
+    - name: Fail if Vector not installed correctly
+      fail:
+        msg: "Vector installation failed - binary missing"
+      when: not vector_bin.stat.exists
+
+    - name: Fail if Vector not running
+      fail:
+        msg: "Vector process is not running"
+      when: vector_process.rc != 0

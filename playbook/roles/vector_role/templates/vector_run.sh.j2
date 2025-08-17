@@ -1,0 +1,6 @@
+#!/bin/bash
+# Kill any existing Vector process
+pkill -f "vector --config" || true
+
+# Start new Vector process
+/usr/local/bin/vector --config {{ vector_config_dir }}/vector.yml > /var/log/vector.log 2>&1 &

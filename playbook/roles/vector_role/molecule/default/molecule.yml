@@ -1,11 +1,25 @@
----
 driver:
   name: docker
+
 platforms:
   - name: oraclelinux8
     image: docker.io/library/oraclelinux:8
     pre_build_image: true
+    privileged: true
+    user: root
 
   - name: ubuntu
-    image: docker.io/pycontribs/ubuntu:latest
+    image: pycontribs/ubuntu:latest
     pre_build_image: true
+    privileged: true
+    user: root
+
+provisioner:
+  name: ansible
+  playbooks:
+    prepare: prepare.yml
+  env:
+    ANSIBLE_ROLES_PATH: /mnt/c/Users/Vova/hw-ansible-test-roles/playbook/roles
+
+verifier:
+  name: ansible

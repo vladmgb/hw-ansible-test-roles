@@ -1,8 +1,8 @@
 ---
 - name: Converge
   hosts: all
-  gather_facts: false
-  tasks:
-    - name: Replace this task with one that validates your content
-      ansible.builtin.debug:
-        msg: "This is the effective test"
+  gather_facts: true
+  become: true
+
+  roles:
+    - /mnt/c/Users/Vova/hw-ansible-test-roles/playbook/roles/vector_role
