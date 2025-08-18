@@ -732,7 +732,7 @@ INFO     default ➜ scenario: Pruning extra files from scenario ephemeral direc
    
 10. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
 
-[Ссылка](https://github.com/vladmgb/hw-ansible-test-roles/tree/main/playbook/roles/vector_role)
+[Ссылка на v1.0.1](https://github.com/vladmgb/hw-ansible-test-roles/releases/tag/v1.0.1)
     
 
 ## Tox
