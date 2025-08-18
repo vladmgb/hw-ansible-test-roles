@@ -732,6 +732,9 @@ INFO     default ➜ scenario: Pruning extra files from scenario ephemeral direc
    
 10. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
 
+[Ссылка](https://github.com/vladmgb/hw-ansible-test-roles/tree/main/playbook/roles/vector_role)
+    
+
 ## Tox
 Добавьте в директорию с vector-role файлы из директории.
 Запустите docker run --privileged=True -v <path_to_repo>:/opt/vector-role -w /opt/vector-role -it aragast/netology:latest /bin/bash, где path_to_repo — путь до корня репозитория с vector-role на вашей файловой системе.
