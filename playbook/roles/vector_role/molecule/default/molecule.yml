@@ -5,14 +5,13 @@ platforms:
   - name: oraclelinux8
     image: docker.io/library/oraclelinux:8
     pre_build_image: true
-    privileged: true
-    user: root
+    command: /bin/sh -c "while true; do sleep 10000; done"
+    
 
   - name: ubuntu
     image: pycontribs/ubuntu:latest
     pre_build_image: true
-    privileged: true
-    user: root
+    command: /bin/sh -c "while true; do sleep 10000; done"
 
 provisioner:
   name: ansible
@@ -20,6 +19,11 @@ provisioner:
     prepare: prepare.yml
   env:
     ANSIBLE_ROLES_PATH: /mnt/c/Users/Vova/hw-ansible-test-roles/playbook/roles
+  inventory:
+    group_vars:
+      all:
+        ansible_become: false
+
 
 verifier:
   name: ansible

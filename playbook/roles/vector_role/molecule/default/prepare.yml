@@ -1,44 +1,37 @@
 ---
 - name: Prepare
   hosts: all
+  become: true
   tasks:
 
-    - name: Check if sudo is installed
-      ansible.builtin.raw: |
-        if command -v sudo >/dev/null 2>&1; then exit 0; else exit 1; fi
-      register: sudo_check
-      ignore_errors: true
-      changed_when: false
+    - name: Update apt cache (Ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
 
-    - name: Install sudo on Oracle Linux
-      ansible.builtin.yum:
-        name: sudo
-        state: present
-      when: 
-        - ansible_facts['os_family'] == 'RedHat'
-        - sudo_check.rc != 0
-
-    - name: Install sudo on Ubuntu
-      ansible.builtin.apt:
-        name: sudo
-        state: present
-      when: 
-        - ansible_facts['os_family'] == 'Debian'
-        - sudo_check.rc != 0
-
-    - name: Install basic utilities (Oracle Linux)
-      ansible.builtin.yum:
+    - name: Install common packages on Ubuntu
+      apt:
         name:
-          - which
-          - procps-ng  
-          - iproute  
+          - curl
+          - git
+          - sudo
+          - python3-apt
         state: present
-      when: ansible_facts['os_family'] == 'RedHat'
+      when: ansible_os_family == "Debian"
 
-    - name: Install basic utilities (Ubuntu)
-      ansible.builtin.apt:
+    - name: Update yum cache (Oracle Linux)
+      yum:
+        name: "*"
+        state: latest
+        update_cache: yes
+      when: ansible_os_family == "RedHat"
+
+    - name: Install common packages on Oracle Linux
+      yum:
         name:
-          - procps
-          - iproute2
+          - curl
+          - git
+          - sudo
+          - python3
         state: present
-      when: ansible_facts['os_family'] == 'Debian'
+      when: ansible_os_family == "RedHat"

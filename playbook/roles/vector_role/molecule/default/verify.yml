@@ -1,22 +1,40 @@
+---
 - name: Verify Vector installation
   hosts: all
+  gather_facts: false
   tasks:
-    - name: Check Vector binary
+
+    - name: Check Vector binary exists
       stat:
         path: /usr/local/bin/vector
       register: vector_bin
+
+    - name: Fail if Vector binary is missing
+      fail:
+        msg: "Vector installation failed - binary missing"
+      when: not vector_bin.stat.exists
 
     - name: Check Vector process
       command: pgrep -f "vector --config"
       register: vector_process
       ignore_errors: true
 
-    - name: Fail if Vector not installed correctly
-      fail:
-        msg: "Vector installation failed - binary missing"
-      when: not vector_bin.stat.exists
-
-    - name: Fail if Vector not running
+    - name: Fail if Vector process is not running
       fail:
         msg: "Vector process is not running"
       when: vector_process.rc != 0
+
+    - name: Get Vector version
+      command: /usr/local/bin/vector --version
+      register: vector_version
+      changed_when: false
+
+    - name: Extract Vector version number
+      set_fact:
+        vector_version_number: "{{ (vector_version.stdout | regex_search('([0-9]+\\.[0-9]+\\.[0-9]+)')) | string }}"
+
+    - name: Ensure Vector version is at least 0.27.0
+      assert:
+        that:
+          - vector_version_number is version('0.27.0', '>=')
+        fail_msg: "Vector version is too old: {{ vector_version_number }}"
