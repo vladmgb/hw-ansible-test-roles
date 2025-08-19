@@ -745,26 +745,500 @@ INFO     default ➜ scenario: Pruning extra files from scenario ephemeral direc
 
 Запустил.
 
-   <img width="681" height="122" alt="image" src="https://github.com/user-attachments/assets/d54b5a56-4e9f-4392-97c8-95201a340469" />
-
-Очень долго замирает на этом этапе. 
-По логам качает и ставит зависмости. 
-
-<img width="742" height="301" alt="image" src="https://github.com/user-attachments/assets/677b98d0-a2d1-4dd1-90e4-4f7c803ecda2" />
-
-На WSL очень долго ждать. Решил подправить tox-requirements.txt, указав конкретные версии.
-
+<details>
+<summary>Вывод</summary>
 ```
-selinux==0.2.1
-lxml==4.6.3
-molecule==3.5.2
-molecule-podman==1.0.1
-jmespath==0.10.0
-
+[root@8be4351a9124 vector_role]# tox
+py37-ansible210 installed: ansible==2.10.7,ansible-base==2.10.17,ansible-compat==1.0.0,arrow==1.2.3,bcrypt==4.2.1,binaryornot==0.4.4,cached-property==1.5.2,Cerberus==1.3.7,certifi==2025.8.3,cffi==1.15.1,chardet==5.2.0,charset-normalizer==3.4.3,click==8.1.8,click-help-colors==0.9.4,cookiecutter==2.6.0,cryptography==45.0.6,distro==1.9.0,enrich==1.2.7,idna==3.10,importlib-metadata==6.7.0,Jinja2==3.1.6,jmespath==1.0.1,lxml==5.4.0,markdown-it-py==2.2.0,MarkupSafe==2.1.5,mdurl==0.1.2,molecule==3.6.1,molecule-podman==1.1.0,packaging==24.0,paramiko==2.12.0,pluggy==1.2.0,pycparser==2.21,Pygments==2.17.2,PyNaCl==1.5.0,python-dateutil==2.9.0.post0,python-slugify==8.0.4,PyYAML==6.0.1,requests==2.31.0,rich==13.8.1,selinux==0.2.1,six==1.17.0,subprocess-tee==0.3.5,text-unidecode==1.3,typing_extensions==4.7.1,urllib3==2.0.7,zipp==3.15.0
+py37-ansible210 run-test-pre: PYTHONHASHSEED='2627599586'
+py37-ansible210 run-test: commands[0] | molecule test -s compatibility --destroy always
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+CRITICAL 'molecule/compatibility/molecule.yml' glob failed.  Exiting.
+ERROR: InvocationError for command /opt/vector_role/.tox/py37-ansible210/bin/molecule test -s compatibility --destroy always (exited with code 1)
+py37-ansible30 installed: ansible==3.0.0,ansible-base==2.10.17,ansible-compat==1.0.0,arrow==1.2.3,bcrypt==4.2.1,binaryornot==0.4.4,cached-property==1.5.2,Cerberus==1.3.7,certifi==2025.8.3,cffi==1.15.1,chardet==5.2.0,charset-normalizer==3.4.3,click==8.1.8,click-help-colors==0.9.4,cookiecutter==2.6.0,cryptography==45.0.6,distro==1.9.0,enrich==1.2.7,idna==3.10,importlib-metadata==6.7.0,Jinja2==3.1.6,jmespath==1.0.1,lxml==5.4.0,markdown-it-py==2.2.0,MarkupSafe==2.1.5,mdurl==0.1.2,molecule==3.6.1,molecule-podman==1.1.0,packaging==24.0,paramiko==2.12.0,pluggy==1.2.0,pycparser==2.21,Pygments==2.17.2,PyNaCl==1.5.0,python-dateutil==2.9.0.post0,python-slugify==8.0.4,PyYAML==6.0.1,requests==2.31.0,rich==13.8.1,selinux==0.2.1,six==1.17.0,subprocess-tee==0.3.5,text-unidecode==1.3,typing_extensions==4.7.1,urllib3==2.0.7,zipp==3.15.0
+py37-ansible30 run-test-pre: PYTHONHASHSEED='2627599586'
+py37-ansible30 run-test: commands[0] | molecule test -s compatibility --destroy always
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+CRITICAL 'molecule/compatibility/molecule.yml' glob failed.  Exiting.
+ERROR: InvocationError for command /opt/vector_role/.tox/py37-ansible30/bin/molecule test -s compatibility --destroy always (exited with code 1)
+py39-ansible210 installed: ansible==2.10.7,ansible-base==2.10.17,ansible-compat==24.10.0,ansible-core==2.15.13,attrs==25.3.0,bracex==2.6,cffi==1.17.1,click==8.1.8,click-help-colors==0.9.4,cryptography==45.0.6,distro==1.9.0,enrich==1.2.7,importlib-resources==5.0.7,Jinja2==3.1.6,jmespath==1.0.1,jsonschema==4.25.1,jsonschema-specifications==2025.4.1,lxml==6.0.0,markdown-it-py==3.0.0,MarkupSafe==3.0.2,mdurl==0.1.2,molecule==6.0.3,molecule-podman==2.0.3,packaging==25.0,pluggy==1.6.0,pycparser==2.22,Pygments==2.19.2,PyYAML==6.0.2,referencing==0.36.2,resolvelib==1.0.1,rich==14.1.0,rpds-py==0.27.0,selinux==0.3.0,subprocess-tee==0.4.2,typing_extensions==4.14.1,wcmatch==10.1
+py39-ansible210 run-test-pre: PYTHONHASHSEED='2627599586'
+py39-ansible210 run-test: commands[0] | molecule test -s compatibility --destroy always
+CRITICAL 'molecule/compatibility/molecule.yml' glob failed.  Exiting.
+ERROR: InvocationError for command /opt/vector_role/.tox/py39-ansible210/bin/molecule test -s compatibility --destroy always (exited with code 1)
+py39-ansible30 installed: ansible==3.0.0,ansible-base==2.10.17,ansible-compat==24.10.0,ansible-core==2.15.13,attrs==25.3.0,bracex==2.6,cffi==1.17.1,click==8.1.8,click-help-colors==0.9.4,cryptography==45.0.6,distro==1.9.0,enrich==1.2.7,importlib-resources==5.0.7,Jinja2==3.1.6,jmespath==1.0.1,jsonschema==4.25.1,jsonschema-specifications==2025.4.1,lxml==6.0.0,markdown-it-py==3.0.0,MarkupSafe==3.0.2,mdurl==0.1.2,molecule==6.0.3,molecule-podman==2.0.3,packaging==25.0,pluggy==1.6.0,pycparser==2.22,Pygments==2.19.2,PyYAML==6.0.2,referencing==0.36.2,resolvelib==1.0.1,rich==14.1.0,rpds-py==0.27.0,selinux==0.3.0,subprocess-tee==0.4.2,typing_extensions==4.14.1,wcmatch==10.1 
+py39-ansible30 run-test-pre: PYTHONHASHSEED='2627599586'
+py39-ansible30 run-test: commands[0] | molecule test -s compatibility --destroy always
+CRITICAL 'molecule/compatibility/molecule.yml' glob failed.  Exiting.
+ERROR: InvocationError for command /opt/vector_role/.tox/py39-ansible30/bin/molecule test -s compatibility --destroy always (exited with code 1)
+___________________________________________________ summary ____________________________________________________ERROR:   py37-ansible210: commands failed
+ERROR:   py37-ansible30: commands failed
+ERROR:   py39-ansible210: commands failed
+ERROR:   py39-ansible30: commands failed
+[root@8be4351a9124 vector_role]# 
 ```
+</details>
 
 Создайте облегчённый сценарий для molecule с драйвером molecule_podman. Проверьте его на исполнимость.
+
+<img width="922" height="472" alt="image" src="https://github.com/user-attachments/assets/9c09bfec-6e98-4c7b-9351-71074f9f2d10" />
+
+
 Пропишите правильную команду в tox.ini, чтобы запускался облегчённый сценарий.
+
+```
+commands =
+    {posargs:molecule test -s compatibility --destroy always}
+```
+
 Запустите команду tox. Убедитесь, что всё отработало успешно.
+
+Запустил tox.
+
+<details>
+<summary>Вывод</summary>
+
+ ```
+
+[root@8d4ea73e0183 vector_role]# tox
+py37-ansible210 installed: ansible==2.10.7,ansible-base==2.10.17,ansible-compat==1.0.0,arrow==1.2.3,bcrypt==4.2.1,binaryornot==0.4.4,cached-property==1.5.2,Cerberus==1.3.7,certifi==2025.8.3,cffi==1.15.1,chardet==5.2.0,charset-normalizer==3.4.3,click==8.1.8,click-help-colors==0.9.4,cookiecutter==2.6.0,cryptography==45.0.6,distro==1.9.0,enrich==1.2.7,idna==3.10,importlib-metadata==6.7.0,Jinja2==3.1.6,jmespath==1.0.1,lxml==5.4.0,markdown-it-py==2.2.0,MarkupSafe==2.1.5,mdurl==0.1.2,molecule==3.6.1,molecule-podman==1.1.0,packaging==24.0,paramiko==2.12.0,pluggy==1.2.0,pycparser==2.21,Pygments==2.17.2,PyNaCl==1.5.0,python-dateutil==2.9.0.post0,python-slugify==8.0.4,PyYAML==6.0.1,requests==2.31.0,rich==13.8.1,selinux==0.2.1,six==1.17.0,subprocess-tee==0.3.5,text-unidecode==1.3,typing_extensions==4.7.1,urllib3==2.0.7,zipp==3.15.0
+py37-ansible210 run-test-pre: PYTHONHASHSEED='69510204'
+py37-ansible210 run-test: commands[0] | molecule test -s light --destroy always
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+INFO     light scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun...
+INFO     Set ANSIBLE_LIBRARY=/root/.cache/ansible-compat/76a2e5/modules:/root/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
+INFO     Set ANSIBLE_COLLECTIONS_PATH=/root/.cache/ansible-compat/76a2e5/collections:/root/.ansible/collections:/usr/share/ansible/collections
+INFO     Set ANSIBLE_ROLES_PATH=/root/.cache/ansible-compat/76a2e5/roles:/root/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
+INFO     Using /root/.ansible/roles/vladmgb.vector_role symlink to current repository in order to enable Ansible to find the role using its expected full name.
+INFO     Running light > dependency
+WARNING  Skipping, missing the requirements file.
+WARNING  Skipping, missing the requirements file.
+INFO     Running light > lint
+INFO     Lint is disabled.
+INFO     Running light > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running light > destroy
+INFO     Sanity checks: 'podman'
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+changed: [localhost] => (item={'image': 'quay.io/centos/centos:stream8', 'name': 'instance', 'pre_build_image': 
+True})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+changed: [localhost] => (item={'started': 1, 'finished': 0, 'ansible_job_id': '615469474518.1063', 'results_file': '/root/.ansible_async/615469474518.1063', 'changed': True, 'failed': False, 'item': {'image': 'quay.io/centos/centos:stream8', 'name': 'instance', 'pre_build_image': True}, 'ansible_loop_var': 'item'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running light > syntax
+
+playbook: /opt/vector_role/molecule/light/converge.yml
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+INFO     Running light > create
+
+PLAY [Create] ******************************************************************
+
+TASK [get podman executable path] **********************************************
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+ok: [localhost]
+
+TASK [save path to executable as fact] *****************************************
+ok: [localhost]
+
+TASK [Log into a container registry] *******************************************
+skipping: [localhost] => (item="instance registry username: None specified") 
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item=Dockerfile: None specified)
+
+TASK [Create Dockerfiles from image names] *************************************
+skipping: [localhost] => (item="Dockerfile: None specified; Image: quay.io/centos/centos:stream8") 
+
+TASK [Discover local Podman images] ********************************************
+ok: [localhost] => (item=instance)
+
+TASK [Build an Ansible compatible image] ***************************************
+skipping: [localhost] => (item=quay.io/centos/centos:stream8) 
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item="instance command: None specified")
+
+TASK [Remove possible pre-existing containers] *********************************
+changed: [localhost]
+
+TASK [Discover local podman networks] ******************************************
+skipping: [localhost] => (item=instance: None specified) 
+
+TASK [Create podman network dedicated to this scenario] ************************
+skipping: [localhost]
+
+TASK [Create molecule instance(s)] *********************************************
+changed: [localhost] => (item=instance)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: Wait for instance(s) creation to complete (300 retries left).
+changed: [localhost] => (item=instance)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=8    changed=3    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+
+INFO     Running light > prepare
+WARNING  Skipping, prepare playbook not configured.
+INFO     Running light > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Replace this task with one that validates your content] ******************
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+ok: [instance] => {
+    "msg": "This is the effective test"
+}
+
+PLAY RECAP *********************************************************************
+instance                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running light > idempotence
+
+PLAY [Converge] ****************************************************************
+
+TASK [Replace this task with one that validates your content] ******************
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+ok: [instance] => {
+    "msg": "This is the effective test"
+}
+
+PLAY RECAP *********************************************************************
+instance                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Idempotence completed successfully.
+INFO     Running light > side_effect
+WARNING  Skipping, side effect playbook not configured.
+INFO     Running light > verify
+INFO     Running Ansible Verifier
+WARNING  Skipping, verify playbook not configured.
+INFO     Verifier completed successfully.
+INFO     Running light > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running light > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible210/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+changed: [localhost] => (item={'image': 'quay.io/centos/centos:stream8', 'name': 'instance', 'pre_build_image': 
+True})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: Wait for instance(s) deletion to complete (300 retries left).
+FAILED - RETRYING: Wait for instance(s) deletion to complete (299 retries left).
+FAILED - RETRYING: Wait for instance(s) deletion to complete (298 retries left).
+changed: [localhost] => (item={'started': 1, 'finished': 0, 'ansible_job_id': '336542714387.1326', 'results_file': '/root/.ansible_async/336542714387.1326', 'changed': True, 'failed': False, 'item': {'image': 'quay.io/centos/centos:stream8', 'name': 'instance', 'pre_build_image': True}, 'ansible_loop_var': 'item'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+py37-ansible30 installed: ansible==3.0.0,ansible-base==2.10.17,ansible-compat==1.0.0,arrow==1.2.3,bcrypt==4.2.1,binaryornot==0.4.4,cached-property==1.5.2,Cerberus==1.3.7,certifi==2025.8.3,cffi==1.15.1,chardet==5.2.0,charset-normalizer==3.4.3,click==8.1.8,click-help-colors==0.9.4,cookiecutter==2.6.0,cryptography==45.0.6,distro==1.9.0,enrich==1.2.7,idna==3.10,importlib-metadata==6.7.0,Jinja2==3.1.6,jmespath==1.0.1,lxml==5.4.0,markdown-it-py==2.2.0,MarkupSafe==2.1.5,mdurl==0.1.2,molecule==3.6.1,molecule-podman==1.1.0,packaging==24.0,paramiko==2.12.0,pluggy==1.2.0,pycparser==2.21,Pygments==2.17.2,PyNaCl==1.5.0,python-dateutil==2.9.0.post0,python-slugify==8.0.4,PyYAML==6.0.1,requests==2.31.0,rich==13.8.1,selinux==0.2.1,six==1.17.0,subprocess-tee==0.3.5,text-unidecode==1.3,typing_extensions==4.7.1,urllib3==2.0.7,zipp==3.15.0
+py37-ansible30 run-test-pre: PYTHONHASHSEED='69510204'
+py37-ansible30 run-test: commands[0] | molecule test -s light --destroy always
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+INFO     light scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun...
+INFO     Set ANSIBLE_LIBRARY=/root/.cache/ansible-compat/76a2e5/modules:/root/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
+INFO     Set ANSIBLE_COLLECTIONS_PATH=/root/.cache/ansible-compat/76a2e5/collections:/root/.ansible/collections:/usr/share/ansible/collections
+INFO     Set ANSIBLE_ROLES_PATH=/root/.cache/ansible-compat/76a2e5/roles:/root/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
+INFO     Using /root/.ansible/roles/vladmgb.vector_role symlink to current repository in order to enable Ansible to find the role using its expected full name.
+INFO     Running light > dependency
+WARNING  Skipping, missing the requirements file.
+WARNING  Skipping, missing the requirements file.
+INFO     Running light > lint
+INFO     Lint is disabled.
+INFO     Running light > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running light > destroy
+INFO     Sanity checks: 'podman'
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed 
+from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+changed: [localhost] => (item={'image': 'quay.io/centos/centos:stream8', 'name': 'instance', 'pre_build_image': 
+True})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+changed: [localhost] => (item={'started': 1, 'finished': 0, 'ansible_job_id': '94604318877.1479', 'results_file': '/root/.ansible_async/94604318877.1479', 'changed': True, 'failed': False, 'item': {'image': 'quay.io/centos/centos:stream8', 'name': 'instance', 'pre_build_image': True}, 'ansible_loop_var': 'item'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running light > syntax
+
+playbook: /opt/vector_role/molecule/light/converge.yml
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed 
+from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+INFO     Running light > create
+
+PLAY [Create] ******************************************************************
+
+TASK [get podman executable path] **********************************************
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed 
+from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+ok: [localhost]
+
+TASK [save path to executable as fact] *****************************************
+ok: [localhost]
+
+TASK [Log into a container registry] *******************************************
+skipping: [localhost] => (item="instance registry username: None specified") 
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item=Dockerfile: None specified)
+
+TASK [Create Dockerfiles from image names] *************************************
+skipping: [localhost] => (item="Dockerfile: None specified; Image: quay.io/centos/centos:stream8") 
+
+TASK [Discover local Podman images] ********************************************
+ok: [localhost] => (item=instance)
+
+TASK [Build an Ansible compatible image] ***************************************
+skipping: [localhost] => (item=quay.io/centos/centos:stream8) 
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item="instance command: None specified")
+
+TASK [Remove possible pre-existing containers] *********************************
+changed: [localhost]
+
+TASK [Discover local podman networks] ******************************************
+skipping: [localhost] => (item=instance: None specified) 
+
+TASK [Create podman network dedicated to this scenario] ************************
+skipping: [localhost]
+
+TASK [Create molecule instance(s)] *********************************************
+changed: [localhost] => (item=instance)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: Wait for instance(s) creation to complete (300 retries left).
+changed: [localhost] => (item=instance)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=8    changed=3    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+
+INFO     Running light > prepare
+WARNING  Skipping, prepare playbook not configured.
+INFO     Running light > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Replace this task with one that validates your content] ******************
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed 
+from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+ok: [instance] => {
+    "msg": "This is the effective test"
+}
+
+PLAY RECAP *********************************************************************
+instance                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running light > idempotence
+
+PLAY [Converge] ****************************************************************
+
+TASK [Replace this task with one that validates your content] ******************
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed 
+from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+ok: [instance] => {
+    "msg": "This is the effective test"
+}
+
+PLAY RECAP *********************************************************************
+instance                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Idempotence completed successfully.
+INFO     Running light > side_effect
+WARNING  Skipping, side effect playbook not configured.
+INFO     Running light > verify
+INFO     Running Ansible Verifier
+WARNING  Skipping, verify playbook not configured.
+INFO     Verifier completed successfully.
+INFO     Running light > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running light > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.7 is no longer supported by the Python core team and support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.7.
+  from cryptography.exceptions import InvalidSignature
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed 
+from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/opt/vector_role/.tox/py37-ansible30/lib/python3.7/site-packages/paramiko/transport.py:253: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+changed: [localhost] => (item={'image': 'quay.io/centos/centos:stream8', 'name': 'instance', 'pre_build_image': 
+True})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: Wait for instance(s) deletion to complete (300 retries left).
+FAILED - RETRYING: Wait for instance(s) deletion to complete (299 retries left).
+FAILED - RETRYING: Wait for instance(s) deletion to complete (298 retries left).
+changed: [localhost] => (item={'started': 1, 'finished': 0, 'ansible_job_id': '686940153253.1740', 'results_file': '/root/.ansible_async/686940153253.1740', 'changed': True, 'failed': False, 'item': {'image': 'quay.io/centos/centos:stream8', 'name': 'instance', 'pre_build_image': True}, 'ansible_loop_var': 'item'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+py39-ansible210 installed: ansible==2.10.7,ansible-base==2.10.17,ansible-compat==24.10.0,ansible-core==2.15.13,attrs==25.3.0,bracex==2.6,cffi==1.17.1,click==8.1.8,click-help-colors==0.9.4,cryptography==45.0.6,distro==1.9.0,enrich==1.2.7,importlib-resources==5.0.7,Jinja2==3.1.6,jmespath==1.0.1,jsonschema==4.25.1,jsonschema-specifications==2025.4.1,lxml==6.0.0,markdown-it-py==3.0.0,MarkupSafe==3.0.2,mdurl==0.1.2,molecule==6.0.3,molecule-podman==2.0.3,packaging==25.0,pluggy==1.6.0,pycparser==2.22,Pygments==2.19.2,PyYAML==6.0.2,referencing==0.36.2,resolvelib==1.0.1,rich==14.1.0,rpds-py==0.27.0,selinux==0.3.0,subprocess-tee==0.4.2,typing_extensions==4.14.1,wcmatch==10.1
+py39-ansible210 run-test-pre: PYTHONHASHSEED='69510204'
+py39-ansible210 run-test: commands[0] | molecule test -s light --destroy always
+WARNING  Driver podman does not provide a schema.
+INFO     light scenario test matrix: dependency, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun with role_name_check=0...
+ERROR    CompletedProcess(args=['ansible-galaxy', 'collection', 'list', '--format=json'], returncode=250, stdout='the full traceback was:\n\nTraceback (most recent call last):\n  File "/opt/vector_role/.tox/py39-ansible210/bin/ansible-galaxy", line 92, in <module>\n    mycli = getattr(__import__("ansible.cli.%s" % sub, fromlist=), myclass)\n  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible/cli/galaxy.py", line 24, in <module>\n    from ansible.galaxy.collection import (\n  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible/galaxy/collection/__init__.py", line 90, in <module>\n    from ansible.galaxy.collection.concrete_artifact_manager import (\n  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible/galaxy/collection/concrete_artifact_manager.py", line 30, in <module>\n    from ansible.galaxy.api 
+import should_retry_error\nImportError: cannot import name \'should_retry_error\' from \'ansible.galaxy.api\' (/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible/galaxy/api.py)\n', stderr="ERROR! Unexpected Exception, this is probably a bug: cannot import name 'should_retry_error' from 'ansible.galaxy.api' (/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible/galaxy/api.py)\n")
+Traceback (most recent call last):
+  File "/opt/vector_role/.tox/py39-ansible210/bin/molecule", line 8, in <module>
+    sys.exit(main())
+  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/click/core.py", line 1161, in __call__    return self.main(*args, **kwargs)
+  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/click/core.py", line 1082, in main    
+    rv = self.invoke(ctx)
+  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/click/core.py", line 1697, in invoke  
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/click/core.py", line 1443, in invoke  
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/click/core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/click/decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/molecule/command/test.py", line 113, in test
+    base.execute_cmdline_scenarios(scenario_name, args, command_args, ansible_args)
+  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/molecule/command/base.py", line 113, in execute_cmdline_scenarios
+    scenario.config.runtime.prepare_environment(
+  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible_compat/runtime.py", line 726, 
+in prepare_environment
+    self.load_collections()
+  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible_compat/runtime.py", line 295, 
+in load_collections
+    raise RuntimeError(msg)
+RuntimeError: Unable to list collections: CompletedProcess(args=['ansible-galaxy', 'collection', 'list', '--format=json'], returncode=250, stdout='the full traceback was:\n\nTraceback (most recent call last):\n  File "/opt/vector_role/.tox/py39-ansible210/bin/ansible-galaxy", line 92, in <module>\n    mycli = getattr(__import__("ansible.cli.%s" % sub, fromlist=[myclass]), myclass)\n  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible/cli/galaxy.py", line 24, in <module>\n    from ansible.galaxy.collection import (\n  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible/galaxy/collection/__init__.py", line 90, in <module>\n    from ansible.galaxy.collection.concrete_artifact_manager import (\n  File "/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible/galaxy/collection/concrete_artifact_manager.py", line 30, in <module>\n    from ansible.galaxy.api import should_retry_error\nImportError: cannot import name \'should_retry_error\' from \'ansible.galaxy.api\' (/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible/galaxy/api.py)\n', stderr="ERROR! Unexpected Exception, this is probably a bug: cannot import name 'should_retry_error' from 'ansible.galaxy.api' (/opt/vector_role/.tox/py39-ansible210/lib/python3.9/site-packages/ansible/galaxy/api.py)\n")
+ERROR: InvocationError for command /opt/vector_role/.tox/py39-ansible210/bin/molecule test -s light --destroy always (exited with code 1)
+py39-ansible30 installed: ansible==3.0.0,ansible-base==2.10.17,ansible-compat==24.10.0,ansible-core==2.15.13,attrs==25.3.0,bracex==2.6,cffi==1.17.1,click==8.1.8,click-help-colors==0.9.4,cryptography==45.0.6,distro==1.9.0,enrich==1.2.7,importlib-resources==5.0.7,Jinja2==3.1.6,jmespath==1.0.1,jsonschema==4.25.1,jsonschema-specifications==2025.4.1,lxml==6.0.0,markdown-it-py==3.0.0,MarkupSafe==3.0.2,mdurl==0.1.2,molecule==6.0.3,molecule-podman==2.0.3,packaging==25.0,pluggy==1.6.0,pycparser==2.22,Pygments==2.19.2,PyYAML==6.0.2,referencing==0.36.2,resolvelib==1.0.1,rich==14.1.0,rpds-py==0.27.0,selinux==0.3.0,subprocess-tee==0.4.2,typing_extensions==4.14.1,wcmatch==10.1 
+py39-ansible30 run-test-pre: PYTHONHASHSEED='69510204'
+py39-ansible30 run-test: commands[0] | molecule test -s light --destroy always
+WARNING  Driver podman does not provide a schema.
+INFO     light scenario test matrix: dependency, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun with role_name_check=0...
+ERROR    CompletedProcess(args=['ansible-galaxy', 'collection', 'list', '--format=json'], returncode=250, stdout='the full traceback was:\n\nTraceback (most recent call last):\n  File "/opt/vector_role/.tox/py39-ansible30/bin/ansible-galaxy", line 92, in <module>\n    mycli = getattr(__import__("ansible.cli.%s" % sub, fromlist=), myclass)\n  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible/cli/galaxy.py", line 24, 
+in <module>\n    from ansible.galaxy.collection import (\n  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible/galaxy/collection/__init__.py", line 90, in <module>\n    from ansible.galaxy.collection.concrete_artifact_manager import (\n  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible/galaxy/collection/concrete_artifact_manager.py", line 30, in <module>\n    from ansible.galaxy.api import should_retry_error\nImportError: cannot import name \'should_retry_error\' from \'ansible.galaxy.api\' (/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible/galaxy/api.py)\n', stderr="ERROR! Unexpected Exception, this is probably a bug: cannot import name 'should_retry_error' from 'ansible.galaxy.api' (/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible/galaxy/api.py)\n")
+Traceback (most recent call last):
+  File "/opt/vector_role/.tox/py39-ansible30/bin/molecule", line 8, in <module>
+    sys.exit(main())
+  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/click/core.py", line 1161, in __call__ 
+    return self.main(*args, **kwargs)
+  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/click/core.py", line 1082, in main     
+    rv = self.invoke(ctx)
+  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/click/core.py", line 1697, in invoke   
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/click/core.py", line 1443, in invoke   
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/click/core.py", line 788, in invoke    
+    return __callback(*args, **kwargs)
+  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/click/decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/molecule/command/test.py", line 113, in test
+    base.execute_cmdline_scenarios(scenario_name, args, command_args, ansible_args)
+  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/molecule/command/base.py", line 113, in execute_cmdline_scenarios
+    scenario.config.runtime.prepare_environment(
+  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible_compat/runtime.py", line 726, in prepare_environment
+    self.load_collections()
+  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible_compat/runtime.py", line 295, in load_collections
+    raise RuntimeError(msg)
+RuntimeError: Unable to list collections: CompletedProcess(args=['ansible-galaxy', 'collection', 'list', '--format=json'], returncode=250, stdout='the full traceback was:\n\nTraceback (most recent call last):\n  File "/opt/vector_role/.tox/py39-ansible30/bin/ansible-galaxy", line 92, in <module>\n    mycli = getattr(__import__("ansible.cli.%s" % sub, fromlist=[myclass]), myclass)\n  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible/cli/galaxy.py", line 24, in <module>\n    from ansible.galaxy.collection import (\n  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible/galaxy/collection/__init__.py", line 90, in <module>\n    from ansible.galaxy.collection.concrete_artifact_manager import (\n  File "/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible/galaxy/collection/concrete_artifact_manager.py", line 30, in 
+<module>\n    from ansible.galaxy.api import should_retry_error\nImportError: cannot import name \'should_retry_error\' from \'ansible.galaxy.api\' (/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible/galaxy/api.py)\n', stderr="ERROR! Unexpected Exception, this is probably a bug: cannot import name 'should_retry_error' from 'ansible.galaxy.api' (/opt/vector_role/.tox/py39-ansible30/lib/python3.9/site-packages/ansible/galaxy/api.py)\n")
+ERROR: InvocationError for command /opt/vector_role/.tox/py39-ansible30/bin/molecule test -s light --destroy always (exited with code 1)
+___________________________________________________ summary ____________________________________________________  
+py37-ansible210: commands succeeded
+  py37-ansible30: commands succeeded
+ERROR:   py39-ansible210: commands failed
+ERROR:   py39-ansible30: commands failed
+[root@8d4ea73e0183 vector_role]# 
+
+```
+</details>
+
+Для py39 надо перебирать рабочую комбинацию пакетов.
+
 Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
+
+[ссылка на 1.0.2](https://github.com/vladmgb/hw-ansible-test-roles/releases/tag/v1.0.2)
+
 
