@@ -732,13 +732,39 @@ INFO     default ➜ scenario: Pruning extra files from scenario ephemeral direc
    
 10. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
 
+[Ссылка на v1.0.1](https://github.com/vladmgb/hw-ansible-test-roles/releases/tag/v1.0.1)
+    
+
 ## Tox
-Добавьте в директорию с vector-role файлы из директории.
-Запустите docker run --privileged=True -v <path_to_repo>:/opt/vector-role -w /opt/vector-role -it aragast/netology:latest /bin/bash, где path_to_repo — путь до корня репозитория с vector-role на вашей файловой системе.
-Внутри контейнера выполните команду tox, посмотрите на вывод.
+1. Добавьте в директорию с vector-role файлы из директории.
+2. Запустите docker run --privileged=True -v <path_to_repo>:/opt/vector-role -w /opt/vector-role -it aragast/netology:latest /bin/bash, где path_to_repo — путь до корня репозитория с vector-role на вашей файловой системе.
+   
+   <img width="809" height="53" alt="image" src="https://github.com/user-attachments/assets/5e335373-45d9-481b-bbb5-a3b100761a4b" />
+
+4. Внутри контейнера выполните команду tox, посмотрите на вывод.
+
+Запустил.
+
+   <img width="681" height="122" alt="image" src="https://github.com/user-attachments/assets/d54b5a56-4e9f-4392-97c8-95201a340469" />
+
+Очень долго замирает на этом этапе. 
+По логам качает и ставит зависмости. 
+
+<img width="742" height="301" alt="image" src="https://github.com/user-attachments/assets/677b98d0-a2d1-4dd1-90e4-4f7c803ecda2" />
+
+На WSL очень долго ждать. Решил подправить tox-requirements.txt, указав конкретные версии.
+
+```
+selinux==0.2.1
+lxml==4.6.3
+molecule==3.5.2
+molecule-podman==1.0.1
+jmespath==0.10.0
+
+```
+
 Создайте облегчённый сценарий для molecule с драйвером molecule_podman. Проверьте его на исполнимость.
 Пропишите правильную команду в tox.ini, чтобы запускался облегчённый сценарий.
 Запустите команду tox. Убедитесь, что всё отработало успешно.
 Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
-После выполнения у вас должно получится два сценария molecule и один tox.ini файл в репозитории. Не забудьте указать в ответе теги решений Tox и Molecule заданий. В качестве решения пришлите ссылку на ваш репозиторий и скриншоты этапов выполнения задания.
 
